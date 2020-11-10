@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": null,
+      "type": "mssql.onprem",
+      "connectionId": "StringSqlConnection",
+      "secretStore": "LocalSecretsFile"
+    },
+    "secrets1": {
+      "resourceId": null,
+      "type": "secrets.user",
+      "connectionId": null,
+      "secretStore": null
+    },
+    "signalr1": {
+      "type": "signalr",
+      "suggestion": "true",
+      "ignored": "true"
+    }
+  }
+}

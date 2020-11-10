@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "signalr1": {
+      "restored": true,
+      "restoreTime": "2020-11-04T11:47:06.9680553Z"
+    },
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2020-11-04T08:29:37.4731211Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2020-11-04T08:29:50.7955445Z"
+    }
+  },
+  "parameters": {}
+}

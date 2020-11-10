@@ -1,0 +1,65 @@
+﻿@page "/articles"
+@using Blazor.Controller
+@using Blazor.Models
+@inject IArticleController ArticleController
+@inject IAutorController AutorController
+
+<h3>Статьи @articleList.Count()</h3>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Название</th>
+            <th scope="col">Автор</th>
+            <th scope="col">Удаление</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in result)
+        {
+        <tr>
+            <th scope="row">@item.ID</th>
+            <td>@item.Title</td>
+            <td>@item.Autor</td>
+            <td @onclick="(()=>Delete(item.ID))"><button type="button" class="btn btn-link">Удалить</button></td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Article> articleList;
+    private List<Autor> autorList;
+    private int skip = 0;
+    private int take = 100;
+    private IEnumerable<PageSet> result;
+
+    public class PageSet
+    {
+        public int ID { get; set; }
+        public string Title { get; set; }
+        public string Autor { get; set; }
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        articleList = await ArticleController.ListAll();
+        autorList = await AutorController.ListAll();
+
+        result = (IEnumerable<PageSet>)articleList.Join(autorList, // второй набор
+             p => p.AutorID, // свойство-селектор объекта из первого набора
+             t => t.ID, // свойство-селектор объекта из второго набора
+             (p, t) => new PageSet { ID = p.ID, Title = p.Title, Autor = t.Name }); // результат
+
+    }
+
+    private async Task Delete(int id)
+    {
+        await ArticleController.Delete(id);
+        await OnInitializedAsync();
+    }
+
+}

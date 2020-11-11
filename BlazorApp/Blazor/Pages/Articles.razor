@@ -4,7 +4,7 @@
 @inject IArticleController ArticleController
 @inject IAutorController AutorController
 
-<h3>Статьи @articleList.Count()</h3>
+<h3>Статьи @result.Count()</h3>
 
 <table class="table table-hover">
     <thead class="thead-dark">
@@ -20,7 +20,7 @@
         {
         <tr>
             <th scope="row">@item.ID</th>
-            <td>@item.Title</td>
+            <td><a href="/article/@item.ID">@item.Title</a></td>
             <td>@item.Autor</td>
             <td @onclick="(()=>Delete(item.ID))"><button type="button" class="btn btn-link">Удалить</button></td>
 

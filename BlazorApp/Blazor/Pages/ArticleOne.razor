@@ -5,21 +5,24 @@
 @inject IAutorController AutorController
 @inject IJSRuntime JSRuntime
 
-<h3>@articleEntity.Title</h3>
+    <div class="container flex-fill">
+        <h3>@articleEntity.Title</h3>
 
-<div>@((MarkupString)articleEntity.ArticleText)</div>
+        <div>@((MarkupString)articleEntity.ArticleText)</div>
 
-    <div>Дата: @articleEntity.CreateData.ToString("dd.mm.yyyy")</div>
-
+        <div class="font-weight-bold mt-xl-3">Дата: @articleEntity.CreateData.ToString("dd.mm.yyyy") Автор: @autorEntity.Name</div>
+    </div>
     @code {
 
         [Parameter] public string Id { get; set; }
 
         Article articleEntity = new Article();
+        Autor autorEntity = new Autor();
 
         protected override async Task OnInitializedAsync()
         {
             articleEntity = await ArticleController.GetById(Convert.ToInt32(Id));
+            autorEntity = await AutorController.GetById(Convert.ToInt32(articleEntity.AutorID));
 
         }
 

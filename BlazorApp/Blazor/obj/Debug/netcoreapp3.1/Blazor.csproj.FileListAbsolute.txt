@@ -96,3 +96,5 @@ D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.r
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
+D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\Pagination.razor.g.cs
+D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\Pagination.razor.g.cs

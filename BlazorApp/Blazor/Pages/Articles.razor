@@ -1,65 +1,88 @@
 ﻿@page "/articles"
+@using System.IO
 @using Blazor.Controller
 @using Blazor.Models
 @inject IArticleController ArticleController
 @inject IAutorController AutorController
 
-<h3>Статьи @result.Count()</h3>
+    <div class="container flex-fill">
+        <h3>Статьи @count</h3>
 
-<table class="table table-hover">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Название</th>
-            <th scope="col">Автор</th>
-            <th scope="col">Удаление</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in result)
-        {
-        <tr>
-            <th scope="row">@item.ID</th>
-            <td><a href="/article/@item.ID">@item.Title</a></td>
-            <td>@item.Autor</td>
-            <td @onclick="(()=>Delete(item.ID))"><button type="button" class="btn btn-link">Удалить</button></td>
+        <Pagination TotalPagesQuantity="totalPagesQuantity" CurrentPage="currentPage" Radius="3"
+                    SelectedPage="SelectedPage"></Pagination>
 
-        </tr>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Автор</th>
+                    <th scope="col">Удаление</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in result)
+                {
+                    <tr>
+                        <th scope="row">@item.ID</th>
+                        <td><a href="/article/@item.ID">@item.Title</a></td>
+                        <td>@item.Autor</td>
+                        <td @onclick="(()=>Delete(item.ID))"><button type="button" class="btn btn-link">Удалить</button></td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        </div>
+
+        @code {
+            private List<Article> articleList;
+            private List<Autor> autorList;
+            private int count;
+            private int quantityPerPage;
+            private int totalPagesQuantity;
+            private int currentPage = 1;
+            private IEnumerable<PageDataSet> result;
+
+            public class PageDataSet
+            {
+                public int ID { get; set; }
+                public string Title { get; set; }
+                public string Autor { get; set; }
+
+            }
+
+            protected override async Task OnInitializedAsync()
+            {
+                await LoadResult();
+
+            }
+
+            private async Task SelectedPage(int page)
+            {
+                currentPage = page;
+                await LoadResult(page);
+            }
+
+            async Task LoadResult(int page = 1, int quantityPerPage = 10)
+            {
+                articleList = await ArticleController.ListAll();
+                autorList = await AutorController.ListAll();
+                count = articleList.Count();
+                totalPagesQuantity = (int)Math.Ceiling(count / (decimal)quantityPerPage);
+
+                result = (IEnumerable<PageDataSet>)articleList.Join(autorList, // второй набор
+                     p => p.AutorID, // свойство-селектор объекта из первого набора
+                     t => t.ID, // свойство-селектор объекта из второго набора
+                     (p, t) => new PageDataSet { ID = p.ID, Title = p.Title, Autor = t.Name })
+                    .Skip((page - 1) * quantityPerPage)
+                    .Take(quantityPerPage); // результат
+            }
+
+            private async Task Delete(int id)
+            {
+                await ArticleController.Delete(id);
+                await OnInitializedAsync();
+            }
+
         }
-    </tbody>
-</table>
-
-@code {
-    private List<Article> articleList;
-    private List<Autor> autorList;
-    private int skip = 0;
-    private int take = 100;
-    private IEnumerable<PageSet> result;
-
-    public class PageSet
-    {
-        public int ID { get; set; }
-        public string Title { get; set; }
-        public string Autor { get; set; }
-
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        articleList = await ArticleController.ListAll();
-        autorList = await AutorController.ListAll();
-
-        result = (IEnumerable<PageSet>)articleList.Join(autorList, // второй набор
-             p => p.AutorID, // свойство-селектор объекта из первого набора
-             t => t.ID, // свойство-селектор объекта из второго набора
-             (p, t) => new PageSet { ID = p.ID, Title = p.Title, Autor = t.Name }); // результат
-
-    }
-
-    private async Task Delete(int id)
-    {
-        await ArticleController.Delete(id);
-        await OnInitializedAsync();
-    }
-
-}

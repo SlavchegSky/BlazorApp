@@ -98,3 +98,5 @@ D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\Pagination.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\Pagination.razor.g.cs
+D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\DropDownComponent.razor.g.cs
+D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\DropDownComponent.razor.g.cs

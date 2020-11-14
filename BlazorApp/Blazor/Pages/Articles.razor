@@ -5,84 +5,95 @@
 @inject IArticleController ArticleController
 @inject IAutorController AutorController
 
-    <div class="container flex-fill">
-        <h3>Статьи @count</h3>
 
-        <Pagination TotalPagesQuantity="totalPagesQuantity" CurrentPage="currentPage" Radius="3"
-                    SelectedPage="SelectedPage"></Pagination>
+<div class="container">
 
-        <table class="table table-hover">
-            <thead class="thead-dark">
+    <h3>Статьи @count</h3>
+    <DropDownComponent Title="Показать записей" QuantityPerPage="quantityPerPage" SetQuantityPerPage="SetQuantityPerPage"></DropDownComponent>
+
+    <Pagination TotalPagesQuantity="totalPagesQuantity" CurrentPage="currentPage" Radius="3"
+                SelectedPage="SelectedPage"></Pagination>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название</th>
+                <th scope="col">Автор</th>
+                <th scope="col">Удаление</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in result)
+            {
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Название</th>
-                    <th scope="col">Автор</th>
-                    <th scope="col">Удаление</th>
+                    <th scope="row">@item.ID</th>
+                    <td><a href="/article/@item.ID">@item.Title</a></td>
+                    <td>@item.Autor</td>
+                    <td @onclick="(()=>Delete(item.ID))"><button type="button" class="btn btn-link">Удалить</button></td>
+
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in result)
-                {
-                    <tr>
-                        <th scope="row">@item.ID</th>
-                        <td><a href="/article/@item.ID">@item.Title</a></td>
-                        <td>@item.Autor</td>
-                        <td @onclick="(()=>Delete(item.ID))"><button type="button" class="btn btn-link">Удалить</button></td>
-
-                    </tr>
-                }
-            </tbody>
-        </table>
-        </div>
-
-        @code {
-            private List<Article> articleList;
-            private List<Autor> autorList;
-            private int count;
-            private int quantityPerPage;
-            private int totalPagesQuantity;
-            private int currentPage = 1;
-            private IEnumerable<PageDataSet> result;
-
-            public class PageDataSet
-            {
-                public int ID { get; set; }
-                public string Title { get; set; }
-                public string Autor { get; set; }
-
             }
+        </tbody>
+    </table>
 
-            protected override async Task OnInitializedAsync()
-            {
-                await LoadResult();
+</div>
 
-            }
+@code {
+    private List<Article> articleList;
+    private List<Autor> autorList;
+    private int count;
+    private int quantityPerPage = 5;
+    private int totalPagesQuantity;
+    private int currentPage = 1;
+    private IEnumerable<PageDataSet> result;
 
-            private async Task SelectedPage(int page)
-            {
-                currentPage = page;
-                await LoadResult(page);
-            }
+    public class PageDataSet
+    {
+        public int ID { get; set; }
+        public string Title { get; set; }
+        public string Autor { get; set; }
 
-            async Task LoadResult(int page = 1, int quantityPerPage = 10)
-            {
-                articleList = await ArticleController.ListAll();
-                autorList = await AutorController.ListAll();
-                count = articleList.Count();
-                totalPagesQuantity = (int)Math.Ceiling(count / (decimal)quantityPerPage);
+    }
 
-                result = (IEnumerable<PageDataSet>)articleList.Join(autorList, // второй набор
-                     p => p.AutorID, // свойство-селектор объекта из первого набора
-                     t => t.ID, // свойство-селектор объекта из второго набора
-                     (p, t) => new PageDataSet { ID = p.ID, Title = p.Title, Autor = t.Name })
-                    .Skip((page - 1) * quantityPerPage)
-                    .Take(quantityPerPage); // результат
-            }
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadResult();
 
-            private async Task Delete(int id)
-            {
-                await ArticleController.Delete(id);
-                await OnInitializedAsync();
-            }
+    }
 
-        }
+    private async Task SetQuantityPerPage(int q)
+    {
+        currentPage = 1;
+        quantityPerPage = q;
+        await LoadResult(1, quantityPerPage);
+    }
+
+    private async Task SelectedPage(int page)
+    {
+        currentPage = page;
+        await LoadResult(page, quantityPerPage);
+    }
+
+    async Task LoadResult(int page = 1, int quantityPerPage = 5)
+    {
+        articleList = await ArticleController.ListAll();
+        autorList = await AutorController.ListAll();
+        count = articleList.Count();
+        totalPagesQuantity = (int)Math.Ceiling(count / (decimal)quantityPerPage);
+
+        result = (IEnumerable<PageDataSet>)articleList.Join(autorList, // второй набор
+             p => p.AutorID, // свойство-селектор объекта из первого набора
+             t => t.ID, // свойство-селектор объекта из второго набора
+             (p, t) => new PageDataSet { ID = p.ID, Title = p.Title, Autor = t.Name })
+            .Skip((page - 1) * quantityPerPage)
+            .Take(quantityPerPage); // результат
+    }
+
+    private async Task Delete(int id)
+    {
+        await ArticleController.Delete(id);
+        await OnInitializedAsync();
+    }
+
+}

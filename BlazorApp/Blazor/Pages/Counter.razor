@@ -1,16 +1,63 @@
 ﻿@page "/counter"
+@using Microsoft.AspNetCore.Http
+@inject IJSRuntime JSRuntime
 
-<h1>Counter</h1>
+<div @onclick="SetCoordinates" class="container-fluid border border-dark">
+    <h1>Blazor Counter</h1>
 
-<p>Current count: @currentCount</p>
+    <div>
+        <button @onclick="IncrementCount">+</button>
+        <span>@currentCount</span>
+        <button @onclick="DecrementCount">-</button>
+    </div>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+    <p><span class="border border-danger">Ctrl +</span> - увеличивает на 10</p>
+    <p><span class="border border-danger">>Alt -</span> - уменьшает на 10</p>
+    <p>***</p>
+    <p>coo</p>
+    <p>***</p>
+
+    <p>Координата X: @coordX</p>
+    <p>Координата Y: @coordY</p>
+</div>
 
 @code {
-    private int currentCount = 0;
+#nullable enable
 
-    private void IncrementCount()
+    private int currentCount = 0;
+    private double coordX;
+    private double coordY;
+    //public HttpContext mycontext = new HttpContextAccessor().HttpContext;
+
+
+    private async Task IncrementCount(MouseEventArgs e)
     {
-        currentCount++;
+        await Task.Delay(500);
+        if (e.CtrlKey == true) currentCount = currentCount + 10;
+        else currentCount++;
+    }
+    private async Task DecrementCount(MouseEventArgs e)
+    {
+        await Task.Delay(500);
+        if (e.AltKey == true) currentCount = currentCount - 10;
+        else currentCount--;
+    }
+
+    //public int? coo;
+
+    private void SetCoordinates(MouseEventArgs e)
+    {
+        coordX = e.ClientX;
+        coordY = e.ClientY;
+        //mycontext.Response.Cookies.Append("Bob","Smith");
+        //coo = mycontext.Request.Cookies.Count;
+        //mycontext.Response.Cookies.Append("X", "XXX");
+        //mycontext.HttpContext.Response.Cookies.Append("Y", "YYY");
+
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("setTitle", "Тренируемся");
     }
 }

@@ -2,13 +2,16 @@
 @using System.IO
 @using Blazor.Controller
 @using Blazor.Models
+@using Blazor.Extensions
 @inject IArticleController ArticleController
 @inject IAutorController AutorController
+@inject IJSRuntime JSRuntime
 
 
 <div class="container">
 
     <h3>Статьи @count</h3>
+
     <DropDownComponent Title="Показать записей" QuantityPerPage="quantityPerPage" SetQuantityPerPage="SetQuantityPerPage"></DropDownComponent>
 
     <Pagination TotalPagesQuantity="totalPagesQuantity" CurrentPage="currentPage" Radius="3"
@@ -17,9 +20,17 @@
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Название</th>
-                <th scope="col">Автор</th>
+                <th scope="col" @onclick="@(()=>OrderByColumn("ID"))">ID
+                    <span class="oi @((sortColumnName == "ID") ? ((direction == "ASC") ? "oi-sort-ascending" : "oi-sort-descending") : null)"></span>
+                </th>
+                <th scope="col" @onclick="@(()=>OrderByColumn("Title"))">
+                    Название
+                    <span class="oi @((sortColumnName == "Title") ? ((direction == "ASC") ? "oi-sort-ascending" : "oi-sort-descending") : null)"></span>
+                </th>
+                <th scope="col" @onclick="@(()=>OrderByColumn("Autor"))">
+                    Автор
+                    <span class="oi @((sortColumnName == "Autor") ? ((direction == "ASC") ? "oi-sort-ascending" : "oi-sort-descending") : null)"></span>
+                </th>
                 <th scope="col">Удаление</th>
             </tr>
         </thead>
@@ -30,7 +41,7 @@
                     <th scope="row">@item.ID</th>
                     <td><a href="/article/@item.ID">@item.Title</a></td>
                     <td>@item.Autor</td>
-                    <td @onclick="(()=>Delete(item.ID))"><button type="button" class="btn btn-link">Удалить</button></td>
+                    <td @onclick="@(()=>Delete(item.ID))"><button type="button" class="btn btn-link">Удалить</button></td>
 
                 </tr>
             }
@@ -42,6 +53,9 @@
 @code {
     private List<Article> articleList;
     private List<Autor> autorList;
+    private string columnName = "ID";
+    private string sortColumnName;
+    private string direction;
     private int count;
     private int quantityPerPage = 5;
     private int totalPagesQuantity;
@@ -66,28 +80,59 @@
     {
         currentPage = 1;
         quantityPerPage = q;
-        await LoadResult(1, quantityPerPage);
+        await LoadResult(1, quantityPerPage, columnName, direction);
     }
 
     private async Task SelectedPage(int page)
     {
         currentPage = page;
-        await LoadResult(page, quantityPerPage);
+        await LoadResult(page, quantityPerPage, columnName, direction);
     }
 
-    async Task LoadResult(int page = 1, int quantityPerPage = 5)
+    async Task LoadResult(int page = 1, int quantityPerPage = 5, string columnName = "ID", string direction = "ASC")
     {
         articleList = await ArticleController.ListAll();
         autorList = await AutorController.ListAll();
         count = articleList.Count();
         totalPagesQuantity = (int)Math.Ceiling(count / (decimal)quantityPerPage);
 
-        result = (IEnumerable<PageDataSet>)articleList.Join(autorList, // второй набор
+        result = (IEnumerable<PageDataSet>)articleList
+            .Join(autorList, // второй набор
              p => p.AutorID, // свойство-селектор объекта из первого набора
              t => t.ID, // свойство-селектор объекта из второго набора
-             (p, t) => new PageDataSet { ID = p.ID, Title = p.Title, Autor = t.Name })
+             (p, t) => new PageDataSet { ID = p.ID, Title = p.Title, Autor = t.Name });
+
+        result = result
+            .OrderByWithDirection(columnName, direction)
             .Skip((page - 1) * quantityPerPage)
-            .Take(quantityPerPage); // результат
+            .Take(quantityPerPage);
+
+    }
+
+    private async Task OrderByColumn(string c)
+    {
+        columnName = c;
+        currentPage = 1;
+
+        if (sortColumnName != columnName)
+        {
+            sortColumnName = columnName;
+            direction = "ASC";
+        }
+        else
+        {
+            if (direction == "ASC")
+            {
+                direction = "DESC";
+            }
+            else
+            {
+                direction = "ASC";
+            }
+
+        }
+
+        await LoadResult(currentPage, quantityPerPage, sortColumnName, direction);
     }
 
     private async Task Delete(int id)
@@ -96,4 +141,8 @@
         await OnInitializedAsync();
     }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("setTitle", "Статьи");
+    }
 }

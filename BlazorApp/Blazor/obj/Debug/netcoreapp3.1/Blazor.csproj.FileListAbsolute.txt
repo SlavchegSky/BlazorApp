@@ -83,6 +83,8 @@ D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\M
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ArticleOne.razor.g.cs
+D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\Pagination.razor.g.cs
+D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\DropDownComponent.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Blazor.csproj.CoreCompileInputs.cache
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Blazor.MvcApplicationPartsAssemblyInfo.cache
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Blazor.dll
@@ -92,11 +94,9 @@ D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\Articles.razo
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\Counter.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\FetchData.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
+D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\DropDownComponent.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
+D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\Pagination.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
-D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\Pagination.razor.g.cs
-D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\Pagination.razor.g.cs
-D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\DropDownComponent.razor.g.cs
-D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\DropDownComponent.razor.g.cs

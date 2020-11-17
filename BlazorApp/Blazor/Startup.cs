@@ -13,6 +13,7 @@ using Blazor.Data;
 using Blazor.Models;
 using Microsoft.EntityFrameworkCore;
 using Blazor.Controller;
+using Microsoft.AspNetCore.Http;
 
 namespace Blazor
 {
@@ -35,6 +36,7 @@ namespace Blazor
             services.AddDbContext<SqlDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StringSqlConnection")));
             services.AddTransient<IArticleController>();
             services.AddTransient<IAutorController>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         }
 
@@ -54,7 +56,7 @@ namespace Blazor
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseCookiePolicy();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

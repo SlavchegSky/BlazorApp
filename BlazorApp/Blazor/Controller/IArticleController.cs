@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blazor.Controller
 {
-    public class IArticleController 
+    public class IArticleController
 
     {
 

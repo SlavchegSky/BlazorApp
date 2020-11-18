@@ -1,4 +1,4 @@
-﻿@page "/articles"
+﻿@page "/cards"
 @using System.IO
 @using Blazor.Controller
 @using Blazor.Models
@@ -23,10 +23,7 @@
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
-                <th scope="col" @onclick="@(()=>OrderByColumn("ID"))">
-                    ID
-                    <span class="oi @((sortColumnName == "ID") ? ((direction == "ASC") ? "oi-sort-ascending" : "oi-sort-descending") : null)"></span>
-                </th>
+                <th scope="col">Сортировка ==>></th>
                 <th scope="col" @onclick="@(()=>OrderByColumn("Title"))">
                     Название
                     <span class="oi @((sortColumnName == "Title") ? ((direction == "ASC") ? "oi-sort-ascending" : "oi-sort-descending") : null)"></span>
@@ -35,42 +32,49 @@
                     Автор
                     <span class="oi @((sortColumnName == "Autor") ? ((direction == "ASC") ? "oi-sort-ascending" : "oi-sort-descending") : null)"></span>
                 </th>
-                <th scope="col">Удаление</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (var item in result)
-            {
-                <tr>
-                    <th scope="row">@item.ID</th>
-                    <td><a href="/article/@item.ID">@item.Title</a></td>
-                    <td>@item.Autor</td>
-                    <td @onclick="@(()=>Delete(item.ID))"><button type="button" class="btn btn-link">Удалить</button></td>
-
-                </tr>
-            }
-        </tbody>
     </table>
 
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in result)
+            {
+
+                <div class="card" style="width: 18rem; margin: 1rem;">
+                    <div class="card-header">
+                        @item.Autor
+                    <button @onclick="@(()=>Delete(item.ID))" type="button" class="btn btn-link" style="float: right;">X</button>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">@((MarkupString)item.Text.Remove(100))...</p>
+                    <a href="/article/@item.ID" class="btn btn-primary">Читать</a>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
 </div>
 
 @code {
     private List<Article> articleList;
     private List<Autor> autorList;
-    private int[] DDItem = { 5, 10, 50, 100 };
-    private string columnName = "ID";
-    private static int quantityPerPage = 5;
+    private int[] DDItem = { 6, 12, 24, 48, 90 };
+    private string columnName = "Title";
+    private int quantityPerPage = 6;
     private string sortColumnName;
     private string direction;
     private int count;
     private int totalPagesQuantity;
-    private static int currentPage = 1;
+    private int currentPage = 1;
     private IEnumerable<PageDataSet> result;
 
     public class PageDataSet
     {
         public int ID { get; set; }
         public string Title { get; set; }
+        public string Text { get; set; }
         public string Autor { get; set; }
 
     }
@@ -94,7 +98,7 @@
         await LoadResult(page, quantityPerPage, columnName, direction);
     }
 
-    async Task LoadResult(int page = 1, int quantityPerPage = 5, string columnName = "ID", string direction = "ASC")
+    async Task LoadResult(int page = 1, int quantityPerPage = 6, string columnName = "Title", string direction = "ASC")
     {
         articleList = await ArticleController.ListAll();
         autorList = await AutorController.ListAll();
@@ -105,7 +109,7 @@
             .Join(autorList, // второй набор
              p => p.AutorID, // свойство-селектор объекта из первого набора
              t => t.ID, // свойство-селектор объекта из второго набора
-             (p, t) => new PageDataSet { ID = p.ID, Title = p.Title, Autor = t.Name });
+             (p, t) => new PageDataSet { ID = p.ID, Title = p.Title, Text = p.ArticleText, Autor = t.Name });
 
         result = result
             .OrderByWithDirection(columnName, direction)
@@ -148,6 +152,6 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await JSRuntime.InvokeVoidAsync("setTitle", "Статьи");
+        await JSRuntime.InvokeVoidAsync("setTitle", "Карточки");
     }
 }

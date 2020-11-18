@@ -4,17 +4,18 @@
             @Title
         </button>
         <div class="dropdown-menu dropdown-menu-right @(Active ? "show" : null)" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item @(QuantityPerPage == 5 ? "active" : null)" type="button" @onclick="()=> SelectDropDown(5)">5</button>
-            <button class="dropdown-item @(QuantityPerPage == 20 ? "active" : null)" type="button" @onclick="()=> SelectDropDown(20)">20</button>
-            <button class="dropdown-item @(QuantityPerPage == 50 ? "active" : null)" type="button" @onclick="()=> SelectDropDown(50)">50</button>
+            @foreach (var i in DDItem) {
+            <button class="dropdown-item @(QuantityPerPage == i ? "active" : null)" type="button" @onclick="() => SelectDropDown(i)">@i</button>
+            }
         </div>
     </div>
 </div>
 
 @code
 {
-    [Parameter] public string Title { get; set; }
-    [Parameter] public int QuantityPerPage { get; set; }
+        [Parameter] public string Title { get; set; }
+        [Parameter] public int QuantityPerPage { get; set; }
+        [Parameter] public int[] DDItem { get; set; }
     [Parameter] public EventCallback<int> SetQuantityPerPage { get; set; }
 
 

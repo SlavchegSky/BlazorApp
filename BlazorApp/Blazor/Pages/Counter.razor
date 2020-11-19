@@ -1,6 +1,10 @@
 ﻿@page "/counter"
+@using System.IO
 @using Microsoft.AspNetCore.Http
+@using Blazor.Controller
+@inject SetCookies SetCookies
 @inject IJSRuntime JSRuntime
+
 
 <div @onclick="SetCoordinates" class="container-fluid border border-dark">
     <h1>Blazor Counter</h1>
@@ -14,7 +18,7 @@
     <p><span class="border border-danger">Ctrl +</span> - увеличивает на 10</p>
     <p><span class="border border-danger">>Alt -</span> - уменьшает на 10</p>
     <p>***</p>
-    <p>coo</p>
+    <p>Кука X: @x Кука Y: @y</p>
     <p>***</p>
 
     <p>Координата X: @coordX</p>
@@ -27,8 +31,16 @@
     private int currentCount = 0;
     private double coordX;
     private double coordY;
-    //public HttpContext mycontext = new HttpContextAccessor().HttpContext;
 
+    public string? x;
+    public string? y;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        x = await SetCookies.CookiesRequest("X");
+        y = await SetCookies.CookiesRequest("Y");
+    }
 
     private async Task IncrementCount(MouseEventArgs e)
     {
@@ -43,21 +55,26 @@
         else currentCount--;
     }
 
-    //public int? coo;
-
-    private void SetCoordinates(MouseEventArgs e)
+    private async Task SetCoordinates(MouseEventArgs e)
     {
+        int days = 6;
         coordX = e.ClientX;
         coordY = e.ClientY;
-        //mycontext.Response.Cookies.Append("Bob","Smith");
-        //coo = mycontext.Request.Cookies.Count;
-        //mycontext.Response.Cookies.Append("X", "XXX");
-        //mycontext.HttpContext.Response.Cookies.Append("Y", "YYY");
+        await WriteCookieAsync("X", coordX.ToString(), days);
+        await WriteCookieAsync("Y", coordY.ToString(), days);
+
+        await OnInitializedAsync();
 
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await JSRuntime.InvokeVoidAsync("setTitle", "Тренируемся");
+    }
+
+    public async Task WriteCookieAsync(string name, string value, int days)
+    {
+        await JSRuntime.InvokeAsync<string>("WriteCookie", name, value, days);
+
     }
 }

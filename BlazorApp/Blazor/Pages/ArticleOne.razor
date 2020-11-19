@@ -1,35 +1,50 @@
-﻿@page "/article/{Id}"
+﻿@page "/article/{Id:int}"
 @using Blazor.Controller
 @using Blazor.Models
 @inject IArticleController ArticleController
 @inject IAutorController AutorController
 @inject IJSRuntime JSRuntime
 
-    <div class="container flex-fill">
-        <h3>@articleEntity.Title</h3>
+    <div class="container">
+        <h3>@Title</h3>
 
-        <div>@((MarkupString)articleEntity.ArticleText)</div>
+        <div>@((MarkupString)ArticleText)</div>
 
-        <div class="font-weight-bold mt-xl-3">Дата: @articleEntity.CreateData.ToString("dd.mm.yyyy") Автор: @autorEntity.Name</div>
+        <div class="font-weight-bold mt-xl-3">Дата: @CreateData Автор: @Autor</div>
     </div>
     @code {
+#nullable enable
+        [Parameter] public int Id { get; set; }
 
-        [Parameter] public string Id { get; set; }
-
-        Article articleEntity = new Article();
-        Autor autorEntity = new Autor();
+        private Article? articleEntity = new Article();
+        private Autor autorEntity = new Autor();
+        private string? Title, ArticleText, CreateData, Autor;
 
         protected override async Task OnInitializedAsync()
         {
-            articleEntity = await ArticleController.GetById(Convert.ToInt32(Id));
-            autorEntity = await AutorController.GetById(Convert.ToInt32(articleEntity.AutorID));
+            articleEntity = await ArticleController.GetById(Id);
+            if (articleEntity != null)
+            {
+                autorEntity = await AutorController.GetById(Convert.ToInt32(articleEntity.AutorID));
+                Title = articleEntity.Title;
+                ArticleText = articleEntity.ArticleText;
+                CreateData = articleEntity.CreateData.ToString("dd.mm.yyyy");
+                Autor = autorEntity.Name;
+            }
+            else
+            {
+                Title = "Извините!";
+                ArticleText = "Такой статьи нет или она была удалена";
+                CreateData = DateTime.Now.ToString("dd.mm.yyyy");
+                Autor = "Администрация сайта";
+            }
 
         }
 
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("setTitle", articleEntity.Title); ;
+            await JSRuntime.InvokeVoidAsync("setTitle", Title); ;
         }
 
     }

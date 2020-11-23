@@ -39,6 +39,7 @@ namespace Blazor
             services.AddDbContext<SqlDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StringSqlConnection")));
             services.AddTransient<IArticleController>();
             services.AddTransient<IAutorController>();
+            services.AddScoped<UploadFilesController>();
 
         }
 

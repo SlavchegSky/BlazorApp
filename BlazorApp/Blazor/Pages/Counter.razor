@@ -1,10 +1,7 @@
 ﻿@page "/counter"
-@using System.IO
-@using Microsoft.AspNetCore.Http
-@using Blazor.Controller
 @inject SetCookies SetCookies
 @inject IJSRuntime JSRuntime
-
+@inject UploadFilesController UploadFile
 
 <div @onclick="SetCoordinates" class="container-fluid border border-dark">
     <h1>Blazor Counter</h1>
@@ -19,10 +16,15 @@
     <p><span class="border border-danger">>Alt -</span> - уменьшает на 10</p>
     <p>***</p>
     <p>Кука X: @x Кука Y: @y</p>
-    <p>***</p>
 
     <p>Координата X: @coordX</p>
     <p>Координата Y: @coordY</p>
+
+</div>
+<div class="container">
+    <p>
+        <button @onclick="@(()=>RefreshCookies())">Получить куки</button>
+    </p>
 </div>
 
 @code {
@@ -35,8 +37,7 @@
     public string? x;
     public string? y;
 
-
-    protected override async Task OnInitializedAsync()
+    private async Task RefreshCookies()
     {
         x = await SetCookies.CookiesRequest("X");
         y = await SetCookies.CookiesRequest("Y");
@@ -57,13 +58,11 @@
 
     private async Task SetCoordinates(MouseEventArgs e)
     {
-        int days = 6;
+        int days = 0;
         coordX = e.ClientX;
         coordY = e.ClientY;
         await WriteCookieAsync("X", coordX.ToString(), days);
         await WriteCookieAsync("Y", coordY.ToString(), days);
-
-        await OnInitializedAsync();
 
     }
 

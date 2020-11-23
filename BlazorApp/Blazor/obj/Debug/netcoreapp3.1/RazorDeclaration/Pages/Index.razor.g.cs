@@ -22,56 +22,98 @@ using System.Net.Http;
 #nullable disable
 #nullable restore
 #line 2 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
-using Microsoft.AspNetCore.Authorization;
+using System.IO;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 3 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
-using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 4 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
-using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 5 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
-using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 6 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
-using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 7 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
-using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 8 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
-using Blazor;
+using Microsoft.AspNetCore.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
+using Microsoft.JSInterop;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
+using Blazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
 using Blazor.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
+using Blazor.Controller;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
+using Blazor.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
+using Blazor.Extensions;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\Repository\BlazorApp\Blazor\_Imports.razor"
+using BlazorInputFile;
 
 #line default
 #line hidden

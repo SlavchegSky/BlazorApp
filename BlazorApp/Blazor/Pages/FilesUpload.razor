@@ -1,0 +1,63 @@
+﻿@page "/filesupload"
+@inject IJSRuntime JSRuntime
+@inject UploadFilesController UploadFile
+
+<div class="container">
+    <h3>Загрузка файлов</h3>
+    <h4>Выберите файл для загрузки</h4>
+
+    <InputFile OnChange="HandleSelection" />
+
+    @if (file != null)
+    {
+        <p>Name: @file.Name</p>
+        <p>Size: @file.Size</p>
+        <p>Type: @file.Type</p>
+        <p>Data: @file.LastModified</p>
+        <p>Status: @status</p>
+    }
+
+    @if (files != null)
+    {
+        foreach (var f in files)
+        {
+            <img src="/upload/images/@f.Name" />
+        }
+    }
+</div>
+
+@code {
+    public string? status;
+    public IFileListEntry? file;
+    public List<FileModel>? files;
+
+    async Task HandleSelection(IFileListEntry[] fileEntry)
+    {
+        file = fileEntry.FirstOrDefault();
+        status = "Загружается файл";
+
+        if (file != null)
+        {
+            // Just load into .NET memory to show it can be done
+            // Alternatively it could be saved to disk, or parsed in memory, or similar
+            //var ms = new MemoryStream();
+            //await file.Data.CopyToAsync(ms);
+
+            if (await UploadFile.UploadAsync(file))
+            {
+                status = $"Finished loading {file.Size} bytes from {file.Name}";
+            }
+            else
+            {
+                status = "Что-то пошло не так";
+            }
+
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("setTitle", "Загрузка файлов");
+    }
+
+}

@@ -14,12 +14,14 @@ namespace Blazor.Data
         public DbSet<Article> Article { get; set; }
         public DbSet<Autor> Autors { get; set; }
         public DbSet<Thematics> Thematic { get; set; }
+        public DbSet<FileModel> Files { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Article>();
             modelBuilder.Entity<Autor>();
             modelBuilder.Entity<Thematics>();
+            modelBuilder.Entity<FileModel>();
 
             //base.OnModelCreating(modelBuilder);
 

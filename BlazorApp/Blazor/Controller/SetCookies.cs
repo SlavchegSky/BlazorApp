@@ -33,7 +33,7 @@ namespace Blazor.Controller
             {
                  context.Request.Cookies.TryGetValue(key, out result);
             }
-            await Task.Delay(500);
+            
             return await Task.FromResult(result);
         }
     }

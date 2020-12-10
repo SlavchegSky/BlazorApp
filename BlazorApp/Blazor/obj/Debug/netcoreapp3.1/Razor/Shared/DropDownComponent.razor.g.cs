@@ -121,9 +121,8 @@ using BlazorInputFile;
         {
             __builder.OpenElement(0, "div");
             __builder.AddAttribute(1, "class", "text-right");
-            __builder.AddMarkupContent(2, "\r\n    ");
-            __builder.OpenElement(3, "div");
-            __builder.AddAttribute(4, "class", "dropdown" + " " + (
+            __builder.OpenElement(2, "div");
+            __builder.AddAttribute(3, "class", "dropdown" + " " + (
 #nullable restore
 #line 2 "D:\Repository\BlazorApp\Blazor\Shared\DropDownComponent.razor"
                            Active ? "show" : null
@@ -132,9 +131,8 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddMarkupContent(5, "\r\n        ");
-            __builder.OpenElement(6, "button");
-            __builder.AddAttribute(7, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.OpenElement(4, "button");
+            __builder.AddAttribute(5, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 3 "D:\Repository\BlazorApp\Blazor\Shared\DropDownComponent.razor"
                           DropDown
@@ -143,12 +141,11 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(8, "class", "btn btn-secondary dropdown-toggle");
-            __builder.AddAttribute(9, "type", "button");
-            __builder.AddAttribute(10, "id", "dropdownMenu2");
-            __builder.AddAttribute(11, "data-toggle", "dropdown");
-            __builder.AddMarkupContent(12, "\r\n            ");
-            __builder.AddContent(13, 
+            __builder.AddAttribute(6, "class", "btn btn-secondary dropdown-toggle");
+            __builder.AddAttribute(7, "type", "button");
+            __builder.AddAttribute(8, "id", "dropdownMenu2");
+            __builder.AddAttribute(9, "data-toggle", "dropdown");
+            __builder.AddContent(10, 
 #nullable restore
 #line 4 "D:\Repository\BlazorApp\Blazor\Shared\DropDownComponent.razor"
              Title
@@ -157,11 +154,10 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(14, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(15, "\r\n        ");
-            __builder.OpenElement(16, "div");
-            __builder.AddAttribute(17, "class", "dropdown-menu" + " dropdown-menu-right" + " " + (
+            __builder.AddMarkupContent(11, "\r\n        ");
+            __builder.OpenElement(12, "div");
+            __builder.AddAttribute(13, "class", "dropdown-menu" + " dropdown-menu-right" + " " + (
 #nullable restore
 #line 6 "D:\Repository\BlazorApp\Blazor\Shared\DropDownComponent.razor"
                                                         Active ? "show" : null
@@ -170,8 +166,7 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(18, "aria-labelledby", "dropdownMenu2");
-            __builder.AddMarkupContent(19, "\r\n");
+            __builder.AddAttribute(14, "aria-labelledby", "dropdownMenu2");
 #nullable restore
 #line 7 "D:\Repository\BlazorApp\Blazor\Shared\DropDownComponent.razor"
              foreach (var i in DDItem) {
@@ -179,9 +174,8 @@ using BlazorInputFile;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(20, "            ");
-            __builder.OpenElement(21, "button");
-            __builder.AddAttribute(22, "class", "dropdown-item" + " " + (
+            __builder.OpenElement(15, "button");
+            __builder.AddAttribute(16, "class", "dropdown-item" + " " + (
 #nullable restore
 #line 8 "D:\Repository\BlazorApp\Blazor\Shared\DropDownComponent.razor"
                                            QuantityPerPage == i ? "active" : null
@@ -190,8 +184,8 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(23, "type", "button");
-            __builder.AddAttribute(24, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(17, "type", "button");
+            __builder.AddAttribute(18, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 8 "D:\Repository\BlazorApp\Blazor\Shared\DropDownComponent.razor"
                                                                                                             () => SelectDropDown(i)
@@ -200,7 +194,7 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddContent(25, 
+            __builder.AddContent(19, 
 #nullable restore
 #line 8 "D:\Repository\BlazorApp\Blazor\Shared\DropDownComponent.razor"
                                                                                                                                       i
@@ -210,7 +204,6 @@ using BlazorInputFile;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(26, "\r\n");
 #nullable restore
 #line 9 "D:\Repository\BlazorApp\Blazor\Shared\DropDownComponent.razor"
             }
@@ -218,11 +211,8 @@ using BlazorInputFile;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(27, "        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(28, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(29, "\r\n");
             __builder.CloseElement();
         }
         #pragma warning restore 1998

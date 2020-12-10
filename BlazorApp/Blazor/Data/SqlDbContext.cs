@@ -10,6 +10,7 @@ namespace Blazor.Data
 {
     public class SqlDbContext : DbContext
     {
+
         public SqlDbContext(DbContextOptions<SqlDbContext> options) : base(options) { }
         public DbSet<Article> Article { get; set; }
         public DbSet<Autor> Autors { get; set; }

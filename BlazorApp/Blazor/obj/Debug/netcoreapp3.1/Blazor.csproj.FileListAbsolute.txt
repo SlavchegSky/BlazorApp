@@ -1,6 +1,5 @@
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Blazor.exe
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Blazor.deps.json
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Blazor.runtimeconfig.json
@@ -65,8 +64,6 @@ D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\System.IdentityModel.Toke
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
-D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Articles.razor.g.cs
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Humanizer.dll
@@ -106,3 +103,5 @@ D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FilesUpload.razor.g.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\FilesUpload.razor.g.cs
+D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Blazor.RazorComponent.output.cache
+D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\scopedcss\bundle\Blazor.styles.css

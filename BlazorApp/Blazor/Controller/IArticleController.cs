@@ -1,5 +1,6 @@
 ﻿using Blazor.Data;
 using Blazor.Models;
+using Blazor.Interface;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Blazor.Controller
 {
-    public class IArticleController
+    public class IArticleController : IArticleManager
 
     {
 
@@ -16,11 +17,6 @@ namespace Blazor.Controller
         {
 
             _appDbContext = appDbContext;
-        }
-
-        public Task<int> Count()
-        {
-            return Task.FromResult(_appDbContext.Article.Count());
         }
 
         public Task<int> Create(Article article)
@@ -38,6 +34,17 @@ namespace Blazor.Controller
             return Task.FromResult(Id);
         }
 
+        public Task<int> Save(Article article)
+        {
+            if (article.ID == default)
+                _appDbContext.Entry(article).State = EntityState.Added;
+            else
+                _appDbContext.Entry(article).State = EntityState.Modified;
+            _appDbContext.SaveChanges();
+
+            return Task.FromResult(article.ID);
+        }
+
         public Task<Article> GetById(int Id)
         {
             var A = _appDbContext.Article.Where(X => X.ID == Id).FirstOrDefault();
@@ -49,25 +56,7 @@ namespace Blazor.Controller
             var results = _appDbContext.Article;
                 
                 return Task.FromResult(results.ToList());
-
-            //return Task.FromResult(_appDbContext.ArticleList
-            //    .Where(X => string.IsNullOrEmpty(search) ? true : X.Title.Contains(search))
-            //    .Skip(skip)
-            //    .Take(take)
-            //    .AsEnumerable()
-            //    .OrderByWithDirection(orderBy, direction)
-            //    .ToList());
         }
 
-        public Task<int> Save(Article article)
-        {
-            if (article.ID == default)
-                _appDbContext.Entry(article).State = EntityState.Added;
-            else
-                _appDbContext.Entry(article).State = EntityState.Modified;
-            _appDbContext.SaveChanges();
-
-            return Task.FromResult(article.ID);
-        }
     }
 }

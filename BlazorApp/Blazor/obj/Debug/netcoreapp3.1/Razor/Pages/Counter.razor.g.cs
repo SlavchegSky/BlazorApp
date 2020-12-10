@@ -131,12 +131,10 @@ using BlazorInputFile;
 #nullable disable
             ));
             __builder.AddAttribute(2, "class", "container-fluid border border-dark");
-            __builder.AddMarkupContent(3, "\r\n    ");
-            __builder.AddMarkupContent(4, "<h1>Blazor Counter</h1>\r\n\r\n    ");
-            __builder.OpenElement(5, "div");
-            __builder.AddMarkupContent(6, "\r\n        ");
-            __builder.OpenElement(7, "button");
-            __builder.AddAttribute(8, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddMarkupContent(3, "<h1>Blazor Counter</h1>\r\n\r\n    ");
+            __builder.OpenElement(4, "div");
+            __builder.OpenElement(5, "button");
+            __builder.AddAttribute(6, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 10 "D:\Repository\BlazorApp\Blazor\Pages\Counter.razor"
                           IncrementCount
@@ -145,11 +143,11 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddContent(9, "+");
+            __builder.AddContent(7, "+");
             __builder.CloseElement();
-            __builder.AddMarkupContent(10, "\r\n        ");
-            __builder.OpenElement(11, "span");
-            __builder.AddContent(12, 
+            __builder.AddMarkupContent(8, "\r\n        ");
+            __builder.OpenElement(9, "span");
+            __builder.AddContent(10, 
 #nullable restore
 #line 11 "D:\Repository\BlazorApp\Blazor\Pages\Counter.razor"
                currentCount
@@ -159,9 +157,9 @@ using BlazorInputFile;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(13, "\r\n        ");
-            __builder.OpenElement(14, "button");
-            __builder.AddAttribute(15, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddMarkupContent(11, "\r\n        ");
+            __builder.OpenElement(12, "button");
+            __builder.AddAttribute(13, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 12 "D:\Repository\BlazorApp\Blazor\Pages\Counter.razor"
                           DecrementCount
@@ -170,17 +168,16 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddContent(16, "-");
+            __builder.AddContent(14, "-");
             __builder.CloseElement();
-            __builder.AddMarkupContent(17, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(18, "\r\n\r\n    ");
-            __builder.AddMarkupContent(19, "<p><span class=\"border border-danger\">Ctrl +</span> - увеличивает на 10</p>\r\n    ");
-            __builder.AddMarkupContent(20, "<p><span class=\"border border-danger\">>Alt -</span> - уменьшает на 10</p>\r\n    ");
-            __builder.AddMarkupContent(21, "<p>***</p>\r\n    ");
-            __builder.OpenElement(22, "p");
-            __builder.AddMarkupContent(23, "Кука X: ");
-            __builder.AddContent(24, 
+            __builder.AddMarkupContent(15, "\r\n\r\n    ");
+            __builder.AddMarkupContent(16, "<p><span class=\"border border-danger\">Ctrl +</span> - увеличивает на 10</p>\r\n    ");
+            __builder.AddMarkupContent(17, "<p><span class=\"border border-danger\">>Alt -</span> - уменьшает на 10</p>\r\n    ");
+            __builder.AddMarkupContent(18, "<p>***</p>\r\n    ");
+            __builder.OpenElement(19, "p");
+            __builder.AddMarkupContent(20, "Кука X: ");
+            __builder.AddContent(21, 
 #nullable restore
 #line 18 "D:\Repository\BlazorApp\Blazor\Pages\Counter.razor"
                 x
@@ -189,8 +186,8 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(25, " Кука Y: ");
-            __builder.AddContent(26, 
+            __builder.AddMarkupContent(22, " Кука Y: ");
+            __builder.AddContent(23, 
 #nullable restore
 #line 18 "D:\Repository\BlazorApp\Blazor\Pages\Counter.razor"
                            y
@@ -200,10 +197,10 @@ using BlazorInputFile;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(27, "\r\n\r\n    ");
-            __builder.OpenElement(28, "p");
-            __builder.AddMarkupContent(29, "Координата X: ");
-            __builder.AddContent(30, 
+            __builder.AddMarkupContent(24, "\r\n\r\n    ");
+            __builder.OpenElement(25, "p");
+            __builder.AddMarkupContent(26, "Координата X: ");
+            __builder.AddContent(27, 
 #nullable restore
 #line 20 "D:\Repository\BlazorApp\Blazor\Pages\Counter.razor"
                       coordX
@@ -213,10 +210,10 @@ using BlazorInputFile;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(31, "\r\n    ");
-            __builder.OpenElement(32, "p");
-            __builder.AddMarkupContent(33, "Координата Y: ");
-            __builder.AddContent(34, 
+            __builder.AddMarkupContent(28, "\r\n    ");
+            __builder.OpenElement(29, "p");
+            __builder.AddMarkupContent(30, "Координата Y: ");
+            __builder.AddContent(31, 
 #nullable restore
 #line 21 "D:\Repository\BlazorApp\Blazor\Pages\Counter.razor"
                       coordY
@@ -226,16 +223,13 @@ using BlazorInputFile;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(35, "\r\n\r\n");
             __builder.CloseElement();
-            __builder.AddMarkupContent(36, "\r\n");
-            __builder.OpenElement(37, "div");
-            __builder.AddAttribute(38, "class", "container");
-            __builder.AddMarkupContent(39, "\r\n    ");
-            __builder.OpenElement(40, "p");
-            __builder.AddMarkupContent(41, "\r\n        ");
-            __builder.OpenElement(42, "button");
-            __builder.AddAttribute(43, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddMarkupContent(32, "\r\n");
+            __builder.OpenElement(33, "div");
+            __builder.AddAttribute(34, "class", "container");
+            __builder.OpenElement(35, "p");
+            __builder.OpenElement(36, "button");
+            __builder.AddAttribute(37, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 26 "D:\Repository\BlazorApp\Blazor\Pages\Counter.razor"
                             ()=>RefreshCookies()
@@ -244,11 +238,9 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddMarkupContent(44, "Получить куки");
+            __builder.AddMarkupContent(38, "Получить куки");
             __builder.CloseElement();
-            __builder.AddMarkupContent(45, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(46, "\r\n");
             __builder.CloseElement();
         }
         #pragma warning restore 1998

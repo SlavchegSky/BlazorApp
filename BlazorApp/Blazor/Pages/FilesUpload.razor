@@ -4,9 +4,10 @@
 
 <div class="container">
     <h3>Загрузка файлов</h3>
-    <h4>Выберите файл для загрузки</h4>
 
     <InputFile OnChange="HandleSelection" />
+
+    <br><br>
 
     @if (file != null)
     {
@@ -14,24 +15,39 @@
         <p>Size: @file.Size</p>
         <p>Type: @file.Type</p>
         <p>Data: @file.LastModified</p>
-        <p>Status: @status</p>
+        <p>Status: @status</p><br><br>
     }
 
-    @if (files != null)
-    {
-        foreach (var f in files)
+    <div class="row">
+        @if (files != null)
         {
-            <img src="/upload/images/@f.Name" />
+            foreach (var item in files)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img src="/upload/images_min/@item.Name" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">@item.Id - @item.Path</p>
+                    </div>
+                </div>
+            }
         }
-    }
+    </div>
 </div>
 
 @code {
+#nullable enable
+
     public string? status;
     public IFileListEntry? file;
     public List<FileModel>? files;
 
-    async Task HandleSelection(IFileListEntry[] fileEntry)
+    protected override async Task OnInitializedAsync()
+    {
+        files = await UploadFile.ListAll();
+
+    }
+
+    private async Task HandleSelection(IFileListEntry[] fileEntry)
     {
         file = fileEntry.FirstOrDefault();
         status = "Загружается файл";
@@ -46,12 +62,12 @@
             if (await UploadFile.UploadAsync(file))
             {
                 status = $"Finished loading {file.Size} bytes from {file.Name}";
+                await OnInitializedAsync();
             }
             else
             {
                 status = "Что-то пошло не так";
             }
-
         }
     }
 

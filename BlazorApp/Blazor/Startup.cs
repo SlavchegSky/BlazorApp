@@ -37,6 +37,8 @@ namespace Blazor
             services.AddScoped<SetCookies>();
             services.AddSingleton<WeatherForecastService>();
             services.AddDbContext<SqlDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StringSqlConnection")));
+            services.AddTransient<IController<Article>>();
+            services.AddTransient<IController<Autor>>();
             services.AddTransient<IArticleController>();
             services.AddTransient<IAutorController>();
             services.AddScoped<UploadFilesController>();

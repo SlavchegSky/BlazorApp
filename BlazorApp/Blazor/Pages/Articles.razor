@@ -1,4 +1,5 @@
 ﻿@page "/articles"
+@using System.Diagnostics;
 @inject IArticleController ArticleController
 @inject IAutorController AutorController
 @inject IJSRuntime JSRuntime
@@ -12,6 +13,7 @@
     <h3>Статьи @((currentPage - 1) * quantityPerPage + 1) - @((currentPage * quantityPerPage < count) ? currentPage * quantityPerPage : count) из @count</h3>
 
     <p>Страница @currentPage из @totalPagesQuantity</p>
+    <p>Время получения запроса: @elapsed ms</p>
 
     <Pagination TotalPagesQuantity="totalPagesQuantity" CurrentPage="currentPage" Radius="3"
                 SelectedPage="SelectedPage"></Pagination>
@@ -55,13 +57,14 @@
     private List<Autor> autorList;
     private int[] DDItem = { 5, 10, 50, 100 };
     private string columnName = "ID";
-    private static int quantityPerPage = 5;
+    private int quantityPerPage = 5;
     private string sortColumnName;
     private string direction;
     private int count;
     private int totalPagesQuantity;
     private static int currentPage = 1;
     private IEnumerable<PageDataSet> result;
+    private long elapsed = 0;
 
     public class PageDataSet
     {
@@ -92,12 +95,13 @@
 
     async Task LoadResult(int page = 1, int quantityPerPage = 5, string columnName = "ID", string direction = "ASC")
     {
+        var sw = Stopwatch.StartNew();
         articleList = await ArticleController.ListAll();
         autorList = await AutorController.ListAll();
         count = articleList.Count();
         totalPagesQuantity = (int)Math.Ceiling(count / (decimal)quantityPerPage);
 
-        result = (IEnumerable<PageDataSet>)articleList
+        result = articleList
             .Join(autorList, // второй набор
              p => p.AutorID, // свойство-селектор объекта из первого набора
              t => t.ID, // свойство-селектор объекта из второго набора
@@ -107,7 +111,8 @@
             .OrderByWithDirection(columnName, direction)
             .Skip((page - 1) * quantityPerPage)
             .Take(quantityPerPage);
-
+        sw.Stop();
+        elapsed = sw.ElapsedMilliseconds;
     }
 
     private async Task OrderByColumn(string c)

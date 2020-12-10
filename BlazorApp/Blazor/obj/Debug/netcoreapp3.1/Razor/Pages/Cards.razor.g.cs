@@ -122,10 +122,9 @@ using BlazorInputFile;
         {
             __builder.OpenElement(0, "div");
             __builder.AddAttribute(1, "class", "container");
-            __builder.AddMarkupContent(2, "\r\n\r\n    ");
-            __builder.OpenComponent<Blazor.Shared.DropDownComponent>(3);
-            __builder.AddAttribute(4, "Title", "Показать записей");
-            __builder.AddAttribute(5, "QuantityPerPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.OpenComponent<Blazor.Shared.DropDownComponent>(2);
+            __builder.AddAttribute(3, "Title", "Показать записей");
+            __builder.AddAttribute(4, "QuantityPerPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 9 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                                                  quantityPerPage
@@ -134,7 +133,7 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(6, "DDItem", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32[]>(
+            __builder.AddAttribute(5, "DDItem", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32[]>(
 #nullable restore
 #line 9 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                                                                           DDItem
@@ -143,7 +142,7 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(7, "SetQuantityPerPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
+            __builder.AddAttribute(6, "SetQuantityPerPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
 #nullable restore
 #line 10 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                            SetQuantityPerPage
@@ -153,10 +152,10 @@ using BlazorInputFile;
 #nullable disable
             )));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(8, "\r\n\r\n    ");
-            __builder.OpenElement(9, "h3");
-            __builder.AddMarkupContent(10, "Статьи ");
-            __builder.AddContent(11, 
+            __builder.AddMarkupContent(7, "\r\n\r\n    ");
+            __builder.OpenElement(8, "h3");
+            __builder.AddMarkupContent(9, "Статьи ");
+            __builder.AddContent(10, 
 #nullable restore
 #line 12 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                  (currentPage - 1) * quantityPerPage + 1
@@ -165,8 +164,8 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             );
-            __builder.AddContent(12, " - ");
-            __builder.AddContent(13, 
+            __builder.AddContent(11, " - ");
+            __builder.AddContent(12, 
 #nullable restore
 #line 12 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                                               (currentPage * quantityPerPage < count) ? currentPage * quantityPerPage : count
@@ -175,8 +174,8 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(14, " из ");
-            __builder.AddContent(15, 
+            __builder.AddMarkupContent(13, " из ");
+            __builder.AddContent(14, 
 #nullable restore
 #line 12 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                                                                                                                                    count
@@ -186,10 +185,10 @@ using BlazorInputFile;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(16, "\r\n\r\n    ");
-            __builder.OpenElement(17, "p");
-            __builder.AddMarkupContent(18, "Страница ");
-            __builder.AddContent(19, 
+            __builder.AddMarkupContent(15, "\r\n\r\n    ");
+            __builder.OpenElement(16, "p");
+            __builder.AddMarkupContent(17, "Страница ");
+            __builder.AddContent(18, 
 #nullable restore
 #line 14 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                  currentPage
@@ -198,8 +197,8 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(20, " из ");
-            __builder.AddContent(21, 
+            __builder.AddMarkupContent(19, " из ");
+            __builder.AddContent(20, 
 #nullable restore
 #line 14 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                  totalPagesQuantity
@@ -209,9 +208,9 @@ using BlazorInputFile;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(22, "\r\n\r\n    ");
-            __builder.OpenComponent<Blazor.Shared.Pagination>(23);
-            __builder.AddAttribute(24, "TotalPagesQuantity", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddMarkupContent(21, "\r\n\r\n    ");
+            __builder.OpenComponent<Blazor.Shared.Pagination>(22);
+            __builder.AddAttribute(23, "TotalPagesQuantity", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 16 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                     totalPagesQuantity
@@ -220,7 +219,7 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(25, "CurrentPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(24, "CurrentPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 16 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                                                      currentPage
@@ -229,7 +228,7 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(26, "Radius", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(25, "Radius", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 16 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                                                                           3
@@ -238,7 +237,7 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(27, "SelectedPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
+            __builder.AddAttribute(26, "SelectedPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
 #nullable restore
 #line 17 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                               SelectedPage
@@ -248,19 +247,16 @@ using BlazorInputFile;
 #nullable disable
             )));
             __builder.CloseComponent();
-            __builder.AddMarkupContent(28, "\r\n\r\n    ");
-            __builder.OpenElement(29, "table");
-            __builder.AddAttribute(30, "class", "table table-hover");
-            __builder.AddMarkupContent(31, "\r\n        ");
-            __builder.OpenElement(32, "thead");
-            __builder.AddAttribute(33, "class", "thead-dark");
-            __builder.AddMarkupContent(34, "\r\n            ");
-            __builder.OpenElement(35, "tr");
-            __builder.AddMarkupContent(36, "\r\n                ");
-            __builder.AddMarkupContent(37, "<th scope=\"col\">Сортировка ==>></th>\r\n                ");
-            __builder.OpenElement(38, "th");
-            __builder.AddAttribute(39, "scope", "col");
-            __builder.AddAttribute(40, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddMarkupContent(27, "\r\n\r\n    ");
+            __builder.OpenElement(28, "table");
+            __builder.AddAttribute(29, "class", "table table-hover");
+            __builder.OpenElement(30, "thead");
+            __builder.AddAttribute(31, "class", "thead-dark");
+            __builder.OpenElement(32, "tr");
+            __builder.AddMarkupContent(33, "<th scope=\"col\">Сортировка ==>></th>\r\n                ");
+            __builder.OpenElement(34, "th");
+            __builder.AddAttribute(35, "scope", "col");
+            __builder.AddAttribute(36, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 23 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                             ()=>OrderByColumn("Title")
@@ -269,9 +265,9 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddMarkupContent(41, "\r\n                    Название\r\n                    ");
-            __builder.OpenElement(42, "span");
-            __builder.AddAttribute(43, "class", "oi" + " " + (
+            __builder.AddMarkupContent(37, "\r\n                    Название\r\n                    ");
+            __builder.OpenElement(38, "span");
+            __builder.AddAttribute(39, "class", "oi" + " " + (
 #nullable restore
 #line 25 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                       (sortColumnName == "Title") ? ((direction == "ASC") ? "oi-sort-ascending" : "oi-sort-descending") : null
@@ -281,12 +277,11 @@ using BlazorInputFile;
 #nullable disable
             ));
             __builder.CloseElement();
-            __builder.AddMarkupContent(44, "\r\n                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(45, "\r\n                ");
-            __builder.OpenElement(46, "th");
-            __builder.AddAttribute(47, "scope", "col");
-            __builder.AddAttribute(48, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddMarkupContent(40, "\r\n                ");
+            __builder.OpenElement(41, "th");
+            __builder.AddAttribute(42, "scope", "col");
+            __builder.AddAttribute(43, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 27 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                             ()=>OrderByColumn("Autor")
@@ -295,9 +290,9 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddMarkupContent(49, "\r\n                    Автор\r\n                    ");
-            __builder.OpenElement(50, "span");
-            __builder.AddAttribute(51, "class", "oi" + " " + (
+            __builder.AddMarkupContent(44, "\r\n                    Автор\r\n                    ");
+            __builder.OpenElement(45, "span");
+            __builder.AddAttribute(46, "class", "oi" + " " + (
 #nullable restore
 #line 29 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                       (sortColumnName == "Autor") ? ((direction == "ASC") ? "oi-sort-ascending" : "oi-sort-descending") : null
@@ -307,21 +302,15 @@ using BlazorInputFile;
 #nullable disable
             ));
             __builder.CloseElement();
-            __builder.AddMarkupContent(52, "\r\n                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(53, "\r\n            ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(54, "\r\n        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(55, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(56, "\r\n\r\n    ");
-            __builder.OpenElement(57, "div");
-            __builder.AddAttribute(58, "class", "container-fluid");
-            __builder.AddMarkupContent(59, "\r\n        ");
-            __builder.OpenElement(60, "div");
-            __builder.AddAttribute(61, "class", "row");
-            __builder.AddMarkupContent(62, "\r\n");
+            __builder.AddMarkupContent(47, "\r\n\r\n    ");
+            __builder.OpenElement(48, "div");
+            __builder.AddAttribute(49, "class", "container-fluid");
+            __builder.OpenElement(50, "div");
+            __builder.AddAttribute(51, "class", "row");
 #nullable restore
 #line 37 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
              foreach (var item in result)
@@ -331,15 +320,12 @@ using BlazorInputFile;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(63, "                ");
-            __builder.OpenElement(64, "div");
-            __builder.AddAttribute(65, "class", "card");
-            __builder.AddAttribute(66, "style", "width: 18rem; margin: 1rem;");
-            __builder.AddMarkupContent(67, "\r\n                    ");
-            __builder.OpenElement(68, "div");
-            __builder.AddAttribute(69, "class", "card-header");
-            __builder.AddMarkupContent(70, "\r\n                        ");
-            __builder.AddContent(71, 
+            __builder.OpenElement(52, "div");
+            __builder.AddAttribute(53, "class", "card");
+            __builder.AddAttribute(54, "style", "width: 18rem; margin: 1rem;");
+            __builder.OpenElement(55, "div");
+            __builder.AddAttribute(56, "class", "card-header");
+            __builder.AddContent(57, 
 #nullable restore
 #line 42 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                          item.Autor
@@ -348,9 +334,9 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             );
-            __builder.AddMarkupContent(72, "\r\n                    ");
-            __builder.OpenElement(73, "button");
-            __builder.AddAttribute(74, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddMarkupContent(58, "\r\n                    ");
+            __builder.OpenElement(59, "button");
+            __builder.AddAttribute(60, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 43 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                         ()=>Delete(item.ID)
@@ -359,20 +345,18 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(75, "type", "button");
-            __builder.AddAttribute(76, "class", "btn btn-link");
-            __builder.AddAttribute(77, "style", "float: right;");
-            __builder.AddContent(78, "X");
+            __builder.AddAttribute(61, "type", "button");
+            __builder.AddAttribute(62, "class", "btn btn-link");
+            __builder.AddAttribute(63, "style", "float: right;");
+            __builder.AddContent(64, "X");
             __builder.CloseElement();
-            __builder.AddMarkupContent(79, "\r\n                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(80, "\r\n                ");
-            __builder.OpenElement(81, "div");
-            __builder.AddAttribute(82, "class", "card-body");
-            __builder.AddMarkupContent(83, "\r\n                    ");
-            __builder.OpenElement(84, "h5");
-            __builder.AddAttribute(85, "class", "card-title");
-            __builder.AddContent(86, 
+            __builder.AddMarkupContent(65, "\r\n                ");
+            __builder.OpenElement(66, "div");
+            __builder.AddAttribute(67, "class", "card-body");
+            __builder.OpenElement(68, "h5");
+            __builder.AddAttribute(69, "class", "card-title");
+            __builder.AddContent(70, 
 #nullable restore
 #line 46 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                             item.Title
@@ -382,10 +366,10 @@ using BlazorInputFile;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(87, "\r\n                    ");
-            __builder.OpenElement(88, "p");
-            __builder.AddAttribute(89, "class", "card-text");
-            __builder.AddContent(90, 
+            __builder.AddMarkupContent(71, "\r\n                    ");
+            __builder.OpenElement(72, "p");
+            __builder.AddAttribute(73, "class", "card-text");
+            __builder.AddContent(74, 
 #nullable restore
 #line 47 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                            (MarkupString)item.Text.Remove(100)
@@ -394,11 +378,11 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             );
-            __builder.AddContent(91, "...");
+            __builder.AddContent(75, "...");
             __builder.CloseElement();
-            __builder.AddMarkupContent(92, "\r\n                    ");
-            __builder.OpenElement(93, "a");
-            __builder.AddAttribute(94, "href", "/article/" + (
+            __builder.AddMarkupContent(76, "\r\n                    ");
+            __builder.OpenElement(77, "a");
+            __builder.AddAttribute(78, "href", "/article/" + (
 #nullable restore
 #line 48 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
                                        item.ID
@@ -407,14 +391,11 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(95, "class", "btn btn-primary");
-            __builder.AddMarkupContent(96, "Читать");
+            __builder.AddAttribute(79, "class", "btn btn-primary");
+            __builder.AddMarkupContent(80, "Читать");
             __builder.CloseElement();
-            __builder.AddMarkupContent(97, "\r\n                ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(98, "\r\n            ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(99, "\r\n");
 #nullable restore
 #line 51 "D:\Repository\BlazorApp\Blazor\Pages\Cards.razor"
         }
@@ -422,11 +403,8 @@ using BlazorInputFile;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(100, "        ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(101, "\r\n    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(102, "\r\n");
             __builder.CloseElement();
         }
         #pragma warning restore 1998

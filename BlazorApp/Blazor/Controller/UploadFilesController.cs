@@ -30,13 +30,26 @@ namespace Blazor.Controller
 
             if (fileEntry != null)
             {
-                var path = Path.Combine(_appEnvironment.WebRootPath, "upload/images", fileEntry.Name);
+                var format = "image/jpeg";
+                var imageFileMin = await fileEntry.ToImageFileAsync(format, 640, 480);
+                var imageFileMax = await fileEntry.ToImageFileAsync(format, 1024, 768);
+                var pathMin = Path.Combine(_appEnvironment.WebRootPath, "upload/images_min", fileEntry.Name);
+                var pathMax = Path.Combine(_appEnvironment.WebRootPath, "upload/images_max", fileEntry.Name);
+
                 var ms = new MemoryStream();
-                await fileEntry.Data.CopyToAsync(ms);
-                using (FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.Write))
+                await imageFileMin.Data.CopyToAsync(ms);
+                using (FileStream fileStream = new FileStream(pathMin, FileMode.Create, FileAccess.Write))
                 {
                     ms.WriteTo(fileStream);
                 }
+                ms.Dispose();
+                ms = new MemoryStream();
+                await imageFileMax.Data.CopyToAsync(ms);
+                using (FileStream fileStream = new FileStream(pathMax, FileMode.Create, FileAccess.Write))
+                {
+                    ms.WriteTo(fileStream);
+                }
+
                 FileModel file = new FileModel { Name = fileEntry.Name, Path = "upload/images" };
                 _context.Files.Add(file);
                 _context.SaveChanges();

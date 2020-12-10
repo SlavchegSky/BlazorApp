@@ -1,4 +1,5 @@
 ﻿using Blazor.Data;
+using Blazor.Interface;
 using Blazor.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -7,18 +8,13 @@ using System.Threading.Tasks;
 
 namespace Blazor.Controller
 {
-    public class IAutorController
+    public class IAutorController : IAutorManager
     {
         private readonly SqlDbContext _appDbContext;
         public IAutorController(SqlDbContext appDbContext)
         {
 
             _appDbContext = appDbContext;
-        }
-
-        public Task<int> Count()
-        {
-            return Task.FromResult(_appDbContext.Autors.Count());
         }
 
         public Task<int> Create(Autor autor)
@@ -36,6 +32,17 @@ namespace Blazor.Controller
             return Task.FromResult(Id);
         }
 
+        public Task<int> Save(Autor autor)
+        {
+            if (autor.ID == default)
+                _appDbContext.Entry(autor).State = EntityState.Added;
+            else
+                _appDbContext.Entry(autor).State = EntityState.Modified;
+            _appDbContext.SaveChanges();
+
+            return Task.FromResult(autor.ID);
+        }
+
         public Task<Autor> GetById(int Id)
         {
             var A = _appDbContext.Autors.Where(X => X.ID == Id).FirstOrDefault();
@@ -49,15 +56,5 @@ namespace Blazor.Controller
             return Task.FromResult(results.ToList());
         }
 
-        public Task<int> Save(Autor autor)
-        {
-            if (autor.ID == default)
-                _appDbContext.Entry(autor).State = EntityState.Added;
-            else
-                _appDbContext.Entry(autor).State = EntityState.Modified;
-            _appDbContext.SaveChanges();
-
-            return Task.FromResult(autor.ID);
-        }
     }
 }

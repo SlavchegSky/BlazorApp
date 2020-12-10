@@ -1,48 +1,48 @@
 ﻿@page "/article/{Id:int}"
-@inject IArticleController ArticleController
-@inject IAutorController AutorController
+@inject IController<Article> ArticleController
+@inject IController<Autor> AutorController
 @inject IJSRuntime JSRuntime
 
-    <div class="container">
-        <h3>@Title</h3>
+<div class="container">
+    <h3>@Title</h3>
 
-        <div>@((MarkupString)ArticleText)</div>
+    <div>@((MarkupString)ArticleText)</div>
 
-        <div class="font-weight-bold mt-xl-3">Дата: @CreateData Автор: @Autor</div>
-    </div>
-    @code {
+    <div class="font-weight-bold mt-xl-3">Дата: @CreateData Автор: @Autor</div>
+</div>
+@code {
 #nullable enable
-        [Parameter] public int Id { get; set; }
+    [Parameter] public int Id { get; set; }
 
-        private Article? articleEntity = new Article();
-        private Autor autorEntity = new Autor();
-        private string? Title, ArticleText, CreateData, Autor;
+    private Article? articleEntity = new Article();
+    private Autor autorEntity = new Autor();
+    private string? Title, ArticleText, CreateData, Autor;
 
-        protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
+    {
+        articleEntity = await ArticleController.GetById(Id);
+        if (articleEntity != null)
         {
-            articleEntity = await ArticleController.GetById(Id);
-            if (articleEntity != null)
-            {
-                autorEntity = await AutorController.GetById(Convert.ToInt32(articleEntity.AutorID));
-                Title = articleEntity.Title;
-                ArticleText = articleEntity.ArticleText;
-                CreateData = articleEntity.CreateData.ToString("dd.mm.yyyy");
-                Autor = autorEntity.Name;
-            }
-            else
-            {
-                Title = "Извините!";
-                ArticleText = "Такой статьи нет или она была удалена";
-                CreateData = DateTime.Now.ToString("dd.mm.yyyy");
-                Autor = "Администрация сайта";
-            }
-
+            autorEntity = await AutorController.GetById(Convert.ToInt32(articleEntity.AutorID));
+            Title = articleEntity.Title;
+            ArticleText = articleEntity.ArticleText;
+            CreateData = articleEntity.CreateData.ToString("dd.mm.yyyy");
+            Autor = autorEntity.Name;
         }
-
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        else
         {
-            await JSRuntime.InvokeVoidAsync("setTitle", Title); ;
+            Title = "Извините!";
+            ArticleText = "Такой статьи нет или она была удалена";
+            CreateData = DateTime.Now.ToString("dd.mm.yyyy");
+            Autor = "Администрация сайта";
         }
 
     }
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("setTitle", Title); ;
+    }
+
+}

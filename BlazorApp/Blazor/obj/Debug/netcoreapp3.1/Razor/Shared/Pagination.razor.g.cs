@@ -121,10 +121,8 @@ using BlazorInputFile;
         {
             __builder.OpenElement(0, "nav");
             __builder.AddAttribute(1, "aria-label", "Page navigation");
-            __builder.AddMarkupContent(2, "\r\n    ");
-            __builder.OpenElement(3, "ul");
-            __builder.AddAttribute(4, "class", "pagination");
-            __builder.AddMarkupContent(5, "\r\n");
+            __builder.OpenElement(2, "ul");
+            __builder.AddAttribute(3, "class", "pagination");
 #nullable restore
 #line 3 "D:\Repository\BlazorApp\Blazor\Shared\Pagination.razor"
          foreach (var link in links)
@@ -133,9 +131,8 @@ using BlazorInputFile;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(6, "            ");
-            __builder.OpenElement(7, "li");
-            __builder.AddAttribute(8, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.OpenElement(4, "li");
+            __builder.AddAttribute(5, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 5 "D:\Repository\BlazorApp\Blazor\Shared\Pagination.razor"
                             () => SelectedPageInternal(link)
@@ -144,7 +141,7 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(9, "class", "page-item" + " " + (
+            __builder.AddAttribute(6, "class", "page-item" + " " + (
 #nullable restore
 #line 5 "D:\Repository\BlazorApp\Blazor\Shared\Pagination.razor"
                                                                                   link.Enabled ? null : "disabled"
@@ -161,10 +158,9 @@ using BlazorInputFile;
 #line hidden
 #nullable disable
             ));
-            __builder.AddMarkupContent(10, "\r\n                ");
-            __builder.OpenElement(11, "span");
-            __builder.AddAttribute(12, "class", "page-link");
-            __builder.AddContent(13, 
+            __builder.OpenElement(7, "span");
+            __builder.AddAttribute(8, "class", "page-link");
+            __builder.AddContent(9, 
 #nullable restore
 #line 6 "D:\Repository\BlazorApp\Blazor\Shared\Pagination.razor"
                                          link.Text
@@ -174,9 +170,7 @@ using BlazorInputFile;
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(14, "\r\n            ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(15, "\r\n");
 #nullable restore
 #line 8 "D:\Repository\BlazorApp\Blazor\Shared\Pagination.razor"
         }
@@ -184,9 +178,7 @@ using BlazorInputFile;
 #line default
 #line hidden
 #nullable disable
-            __builder.AddContent(16, "    ");
             __builder.CloseElement();
-            __builder.AddMarkupContent(17, "\r\n");
             __builder.CloseElement();
         }
         #pragma warning restore 1998

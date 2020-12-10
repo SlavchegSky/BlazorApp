@@ -8,7 +8,6 @@ D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Blazor.dll
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Blazor.pdb
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Blazor.Views.dll
 D:\Repository\BlazorApp\Blazor\bin\Debug\netcoreapp3.1\Blazor.Views.pdb
-D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Blazor.csprojAssemblyReference.cache
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Blazor.AssemblyInfoInputs.cache
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Blazor.AssemblyInfo.cs
 D:\Repository\BlazorApp\Blazor\obj\Debug\netcoreapp3.1\Blazor.RazorComponent.input.cache

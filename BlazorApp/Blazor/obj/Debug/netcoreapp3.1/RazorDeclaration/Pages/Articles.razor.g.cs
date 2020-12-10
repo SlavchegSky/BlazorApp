@@ -133,17 +133,18 @@ using System.Diagnostics;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "D:\Repository\BlazorApp\Blazor\Pages\Articles.razor"
+#line 64 "D:\Repository\BlazorApp\Blazor\Pages\Articles.razor"
        
     private List<Article> articleList;
     private List<Autor> autorList;
     private int[] DDItem = { 5, 10, 50, 100 };
     private string columnName = "ID";
-    private int quantityPerPage = 5;
-    private string sortColumnName;
-    private string direction;
+    private static int quantityPerPage = 5;
+    private static string sortColumnName;
+    private static string direction = "ASC";
     private int count;
-    private int totalPagesQuantity;
+    private static int totalPagesQuantity;
+    //private static int beginPage = 1;
     private static int currentPage = 1;
     private IEnumerable<PageDataSet> result;
     private long elapsed = 0;
@@ -158,7 +159,7 @@ using System.Diagnostics;
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadResult();
+        await LoadResult(currentPage, quantityPerPage, columnName, direction);
 
     }
 
@@ -166,16 +167,16 @@ using System.Diagnostics;
     {
         currentPage = 1;
         quantityPerPage = q;
-        await LoadResult(1, quantityPerPage, columnName, direction);
+        await LoadResult(currentPage, quantityPerPage, columnName, direction);
     }
 
     private async Task SelectedPage(int page)
     {
         currentPage = page;
-        await LoadResult(page, quantityPerPage, columnName, direction);
+        await LoadResult(currentPage, quantityPerPage, columnName, direction);
     }
 
-    async Task LoadResult(int page = 1, int quantityPerPage = 5, string columnName = "ID", string direction = "ASC")
+    async Task LoadResult(int currentPage, int quantityPerPage, string columnName, string direction)
     {
         var sw = Stopwatch.StartNew();
         articleList = await ArticleController.ListAll();
@@ -191,7 +192,7 @@ using System.Diagnostics;
 
         result = result
             .OrderByWithDirection(columnName, direction)
-            .Skip((page - 1) * quantityPerPage)
+            .Skip((currentPage - 1) * quantityPerPage)
             .Take(quantityPerPage);
         sw.Stop();
         elapsed = sw.ElapsedMilliseconds;

@@ -11,12 +11,11 @@
     <div class="font-weight-bold mt-xl-3">Дата: @CreateData Автор: @Autor</div>
 </div>
 @code {
-#nullable enable
     [Parameter] public int Id { get; set; }
 
     private Article? articleEntity = new Article();
     private Autor autorEntity = new Autor();
-    private string? Title, ArticleText, CreateData, Autor;
+    private string Title, ArticleText, CreateData, Autor;
 
     protected override async Task OnInitializedAsync()
     {

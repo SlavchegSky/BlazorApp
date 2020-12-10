@@ -128,12 +128,11 @@ using BlazorInputFile;
 #nullable restore
 #line 13 "D:\Repository\BlazorApp\Blazor\Pages\ArticleOne.razor"
        
-#nullable enable
     [Parameter] public int Id { get; set; }
 
     private Article? articleEntity = new Article();
     private Autor autorEntity = new Autor();
-    private string? Title, ArticleText, CreateData, Autor;
+    private string Title, ArticleText, CreateData, Autor;
 
     protected override async Task OnInitializedAsync()
     {
